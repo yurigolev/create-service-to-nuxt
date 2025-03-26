@@ -14,9 +14,11 @@
 
 import {useServiceTodos} from "~/composables/useServiceTodos.js";
 
+const serviceTodo = useServiceTodos()
+
 const todos = ref([]);
 
 async function submit() {
-  todos.value = await useServiceTodos().getTodoList();
+  todos.value = await serviceTodo.getTodoList();
 }
 </script>
