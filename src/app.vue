@@ -12,11 +12,11 @@
 
 <script setup>
 
-const { $api } = useNuxtApp();
+import {useServiceTodos} from "~/composables/useServiceTodos.js";
 
 const todos = ref([]);
 
 async function submit() {
-  todos.value = await $api.todos.getTodoList();
+  todos.value = await useServiceTodos().getTodoList();
 }
 </script>

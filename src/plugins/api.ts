@@ -11,11 +11,10 @@ export default defineNuxtPlugin(() => {
             'Content-Type': 'application/json'
         }
     });
+
     return {
         provide: {
-            api: {
-                todos: todoService(apiClient),
-            }
+            api: apiClient
         }
     };
 });
