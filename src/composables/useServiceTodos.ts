@@ -1,15 +1,18 @@
 export const useServiceTodos = () => {
-
-    const { $api } = useNuxtApp()
+    const { $api } = useNuxtApp();
 
     return {
-        async getTodoList() {
-            const { data } = await $api.get('/todos');
-            return data;
+        getTodoList: () => {
+            // Какая нибудь логика по обработке данных, проверки и т.д.
+            return $api.get<any, any>('/todos').then(res => res.data)
         },
-        async getTodoById(id: number) {
-            const { data } = await $api.get(`/todos/${id}`);
-            return data;
+
+        getTodoById: (id: number | null) => {
+            // Какая нибудь логика по обработке данных, проверки и т.д.
+            if (id === null) {
+                return null
+            }
+            return $api.get<any, any>(`/todos/${id}`).then(res => res.data)
         }
-    }
-}
+    };
+};
